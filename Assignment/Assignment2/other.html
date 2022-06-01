@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <label>Enter  Sentence</label>
+        <input type="text" name="sentence" id="inpSent" required/>
+        <br/>
+        <br/>
+        <label>Enter Charcter </label>
+        <input type="text" name="findChar" id="fChar" required size="1"/>
+        <br/>
+        <br/>
+        <input type="button" id="btn-find" value="Output" />
+        <p>Output :-  </p> <b><p id="outPara"></p></b>
+
+
+        <script>
+         
+            document.getElementById("btn-find").addEventListener('click', ()=>{
+                var sentence = document.getElementById("inpSent").value.toLowerCase();
+                var findChar = document.getElementById("fChar").value.toLowerCase();
+                var out = document.getElementById("outPara");
+
+                var len = sentence.length;
+
+                var n = parseInt(sentence.indexOf(findChar)) +1;
+
+                
+
+
+                if(n){
+                    out.innerText= sentence.substr(n,len);
+                }else{
+                    out.innerText = "The letter does not exist in sentence";
+                }
+                
+
+            })
+
+
+        </script>
+    </body>
+</html>

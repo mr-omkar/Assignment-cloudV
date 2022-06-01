@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid white;
+                border-collapse: collapse;
+            }
+            th{
+                background-color:#96D4D4;
+                color: black;
+                padding: 10px 30px;
+            }
+            td{
+                background-color: #cee1e1;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="nTable">
+            <thead>
+            <tr>
+                <th aria-disabled="true">No</th>
+                
+                <th>Name</th>
+                <th>Addr</th>
+            </tr>
+        </thead>
+            <tbody id="tableData">
+                
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+          <label>Name </label>
+            <input type="text" name="uname" id="nameinput" required>
+            <br/>
+            <br/>
+           <label>Address</label>
+           <input type="text" name="uaddr" id="addrinput" required>
+           <br/>
+           <br/>
+           <button id="addAfter">Add After</button>
+           <button id="addBefore">Add Before</button>
+     
+        
+    </body>
+
+    <script>
+        var tbl = document.getElementById("nTable");
+        var tblData = document.getElementById("tableData")
+        const btn1= document.getElementById("addAfter");
+        const btn2= document.getElementById("addBefore");
+        
+
+
+        var r1,cel1,cel2,cel3;
+        var cnt = 0;
+        btn1.addEventListener('click',()=>{
+            let inpUname = document.getElementById("nameinput");
+            let inpAddr = document.getElementById("addrinput");
+            cnt++;
+            r1=tblData.insertRow(-1);
+            cel1 = r1.insertCell(0);
+            cel2 = r1.insertCell(1);
+            cel3 = r1.insertCell(2);
+
+            cel1.innerHTML = cnt ;
+            cel2.innerHTML =inpUname.value;
+            cel3.innerHTML = inpAddr.value;
+            
+
+            inpUname.value="";
+            inpAddr.value="";
+        
+        });
+        
+        btn2.addEventListener('click',()=>{
+            console.log("inside btn2");
+            let inpUname = document.getElementById("nameinput");
+            let inpAddr = document.getElementById("addrinput");
+
+            
+          var tRow = new Array (tblData.querySelectorAll('tr:nth-child(n)'));
+          tRow.forEach(ele => {
+           
+      
+            console.log()
+            ele.forEach(el => {
+                el.cells[0].innerHTML = parseInt(el.cells[0].innerHTML) +1;
+                console.log(el.cells[0].innerHTML);
+            });
+
+           
+          });
+
+            r1=tblData.insertRow(0);
+            cel1 = r1.insertCell(0);
+            cel2 = r1.insertCell(1);
+            cel3 = r1.insertCell(2);
+
+            cel1.innerHTML = 1 ;
+            cel2.innerHTML =inpUname.value;
+            cel3.innerHTML = inpAddr.value;
+
+            cnt++;
+
+            inpUname.value="";
+            inpAddr.value ="";
+        });
+
+    </script>
+</html>
